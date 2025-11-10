@@ -1,4 +1,7 @@
+version: '3.8'
+
 services:
+  # MySQL Database Service
   mysql:
     image: mysql:8.0
     container_name: task-manager-mysql
@@ -16,7 +19,37 @@ services:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
+    networks:
+      - task-manager-network
+
+  # Next.js Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-manager-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: mysql://task_user:task_password@mysql:3306/task_manager
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app/app
+      - ./src:/app/src
+      - ./public:/app/public
+    networks:
+      - task-manager-network
+    command: sh -c "npm install && npx prisma migrate deploy && npm run build && npm start"
 
 volumes:
   mysql_data:
     driver: local
+
+networks:
+  task-manager-network:
+    driver: bridge

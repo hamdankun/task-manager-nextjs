@@ -47,6 +47,7 @@ const config: runtime.GetPrismaClientConfig = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -55,8 +56,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n// User model for authentication\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  password  String // hashed password\n  firstName String?\n  lastName  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relations\n  tasks Task[]\n\n  @@map(\"users\")\n}\n\n// Task model for task management\nmodel Task {\n  id          String   @id @default(cuid())\n  title       String\n  description String?\n  status      String   @default(\"TODO\") // \"to do\", \"in progress\", \"done\"\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  // Relations\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"tasks\")\n}\n",
-  "inlineSchemaHash": "4101de99d8691524a550a6bc91421cd85be34add01a9e77b6009142eb1cfe0b6",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\n// User model for authentication\nmodel User {\n  id        String   @id @default(cuid())\n  email     String   @unique\n  password  String // hashed password\n  firstName String?\n  lastName  String?\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relations\n  tasks Task[]\n\n  @@map(\"users\")\n}\n\n// Task model for task management\nmodel Task {\n  id          String   @id @default(cuid())\n  title       String\n  description String?\n  status      String   @default(\"TODO\") // \"to do\", \"in progress\", \"done\"\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n\n  // Relations\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  // future implementation for projects\n  // projectId String?\n  // project   Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)\n\n  @@map(\"tasks\")\n}\n\n// model Project {\n//   id          String   @id @default(cuid())\n//   name        String\n//   description String?\n//   createdAt   DateTime @default(now())\n//   updatedAt   DateTime @updatedAt\n\n//   // Relations\n//   tasks Task[]\n\n//   @@map(\"projects\")\n// }\n",
+  "inlineSchemaHash": "378ea1629462aef87aa2ef31a6b0b3ee6f3926d745b2dc0630d9d94d16352c41",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
