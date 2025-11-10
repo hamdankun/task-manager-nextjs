@@ -51,7 +51,7 @@ export function SignupFormWrapper() {
 
       if (result.success) {
         // Redirect to dashboard on successful signup
-        router.push('/dashboard')
+        router.push('/login')
       } else {
         // Show error message from domain/data layer
         setError(result.error || 'Signup failed')
