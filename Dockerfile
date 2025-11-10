@@ -28,6 +28,7 @@ COPY package.json yarn.lock ./
 
 # Install production dependencies only
 RUN yarn install && yarn cache clean --force
+RUN yarn migrate:generate
 
 # Copy built application from builder
 COPY --from=builder /app/prisma ./prisma

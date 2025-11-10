@@ -9,6 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "migrate:generate": "prisma generate",
     "migrate:apply": "prisma generate && prisma migrate dev",
     "migrate:deploy": "prisma generate && prisma migrate deploy",
     "migrate:reset": "prisma migrate reset",
