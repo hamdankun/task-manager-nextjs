@@ -30,6 +30,7 @@ COPY package.json yarn.lock ./
 RUN yarn install && yarn cache clean --force
 
 # Copy built application from builder
+COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
