@@ -38,10 +38,6 @@ services:
       NEXT_PUBLIC_APP_URL: http://localhost:3000
     ports:
       - "3000:3000"
-    volumes:
-      - ./app:/app/app
-      - ./src:/app/src
-      - ./public:/app/public
     networks:
       - task-manager-network
     command: sh -c "yarn migrate:apply && yarn start"

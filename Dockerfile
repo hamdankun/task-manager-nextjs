@@ -12,6 +12,12 @@ RUN yarn install
 # Copy source code
 COPY . .
 
+# Set fake environment variable for database connection
+ENV DATABASE_URL="mysql://{user}:{password}@{host}:{port}/{db}"
+
+# Generate Prisma Client
+RUN yarn migrate:generate
+
 # Build the application
 RUN yarn build
 
@@ -28,7 +34,6 @@ COPY package.json yarn.lock ./
 
 # Install production dependencies only
 RUN yarn install && yarn cache clean --force
-RUN yarn migrate:generate
 
 # Copy built application from builder
 COPY --from=builder /app/prisma ./prisma

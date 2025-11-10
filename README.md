@@ -345,12 +345,6 @@ NEXT_PUBLIC_APP_URL=https://your-app-url.com
 ```
 
 ## 📚 Documentation
-
-- **[DOCKER.md](DOCKER.md)** - Complete Docker setup and troubleshooting
-- **[DOCKER-QUICKSTART.md](DOCKER-QUICKSTART.md)** - Quick Docker reference
-- **[TESTING.md](TESTING.md)** - Testing infrastructure guide
-- **[AUTH_TESTS.md](AUTH_TESTS.md)** - Authentication tests documentation
-- **[TASK_TESTS.md](TASK_TESTS.md)** - Task domain tests documentation
 - **[docs/PRD.md](docs/PRD.md)** - Product requirements
 
 ## 🎯 Features
