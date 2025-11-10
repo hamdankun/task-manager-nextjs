@@ -34,7 +34,7 @@ services:
         condition: service_healthy
     environment:
       NODE_ENV: production
-      DATABASE_URL: mysql://task_user:task_password@mysql:3306/task_manager
+      DATABASE_URL: mysql://root:root@mysql:3306/task_manager
       NEXT_PUBLIC_APP_URL: http://localhost:3000
     ports:
       - "3000:3000"
