@@ -17,7 +17,7 @@ git clone https://github.com/hamdankun/task-manager-nextjs.git
 cd task-manager-nextjs
 
 # 2. Install dependencies
-npm install
+yarn install
 
 # 3. Setup database
 # Copy .env.example to .env.local and configure DATABASE_URL
@@ -27,7 +27,7 @@ cp .env.example .env.local
 yarn migrate:apply
 
 # 5. Start development server
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -289,38 +289,37 @@ task-manager-nextjs/
 ### Run Tests
 ```bash
 # All tests
-npm test
+yarn test
 
 # Watch mode
-npm test -- --watch
+yarn test -- --watch
 
 # Coverage report
-npm run test:coverage
+yarn test:coverage
 
 # Specific test file
-npm test UpdateTaskUseCase.test.ts
+yarn test UpdateTaskUseCase.test.ts
 ```
 
 ## 📦 Available Scripts
 
 ```bash
 # Development
-npm run dev              # Start development server (localhost:3000)
-npm run build           # Build for production
-npm start               # Start production server
+yarn dev              # Start development server (localhost:3000)
+yarn build           # Build for production
+yarn start               # Start production server
 
 # Database
-npx prisma migrate dev # Create and apply migrations
-npx prisma studio     # Open Prisma Studio UI
+yarn migrate:apply # Create and apply migrations
 
 # Testing
-npm test               # Run all tests
-npm test -- --watch  # Watch mode
-npm run test:coverage # Generate coverage report
+yarn test               # Run all tests
+yarn test -- --watch  # Watch mode
+yarn test:coverage # Generate coverage report
 
 # Linting
-npm run lint          # Run ESLint
-npm run lint -- --fix # Fix linting errors
+yarn lint          # Run ESLint
+yarn lint -- --fix # Fix linting errors
 ```
 
 ## 🚀 Deployment
