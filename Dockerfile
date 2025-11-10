@@ -48,4 +48,4 @@ EXPOSE 3000
 ENTRYPOINT ["dumb-init", "--"]
 
 # Start the application
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]

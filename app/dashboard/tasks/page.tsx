@@ -3,6 +3,9 @@ import { getAuthUser } from '@lib/auth'
 import TasksPageClient from '@/src/presentation/components/task/TasksPageClient'
 import { DashboardLayout } from '@/src/presentation/components/dashboard/DashboardLayout'
 
+// Mark this route as dynamic because it uses cookies
+export const dynamic = 'force-dynamic'
+
 export default async function TasksPage() {
   const authUser = await getAuthUser()
 

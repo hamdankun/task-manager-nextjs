@@ -10,6 +10,9 @@ import { CheckCircle2, ListTodo } from 'lucide-react'
  * Will be populated in later phases with task management features
  */
 
+// Mark this route as dynamic because it uses cookies
+export const dynamic = 'force-dynamic'
+
 export default async function DashboardPage() {
   const user = await getAuthUser()
   const userName = await getUserFullName()
